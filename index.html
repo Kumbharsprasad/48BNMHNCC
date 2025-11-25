@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="48 Maharashtra Battalion National Cadet Corps - Official Website">
+    <title>48 MH Bn NCC - National Cadet Corps</title>
+    <link rel="stylesheet" href="ncc_styles.css">
+</head>
+<body>
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-left">
+                    <img src="material/NCC_LEFT.jpg" alt="NCC Logo" class="header-logo">
+                </div>
+                <div class="header-center">
+                    <h1 class="main-title">48 MH Bn NCC</h1>
+                    <h2 class="sub-title">National Cadet Corps</h2>
+                    <p class="motto">Unity and Discipline</p>
+                </div>
+                <div class="logo-right">
+                    <img src="material/NCC_RIGHT.jpg" alt="Maharashtra Logo" class="header-logo">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="nav-left-info">
+                    <span class="nav-date" id="currentDate">Loading...</span>
+                    <span class="nav-time" id="currentTime">Loading...</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About NCC</a></li>
+                    <li><a href="#history">History</a></li>
+                    <li><a href="#battalion">Our Battalion</a></li>
+                    <li><a href="ssb_test.html">SSB Module</a></li>
+                </ul>
+                <div class="nav-right-info">
+                    <span class="nav-location">Dhule, Maharashtra</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Image Slider Section -->
+    <section class="image-slider">
+        <div class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slide active">
+                    <img src="slider/IMAGE_1.jpg" alt="NCC Activity 1">
+                </div>
+                <div class="slide">
+                    <img src="slider/IMAGE_2.jpg" alt="NCC Activity 2">
+                </div>
+                <div class="slide">
+                    <img src="slider/IMAGE_3.jpg" alt="NCC Activity 3">
+                </div>
+                <div class="slide">
+                    <img src="slider/IMAGE_4.jpg" alt="NCC Activity 4">
+                </div>
+                <div class="slide">
+                    <img src="slider/IMAGE_5.jpeg" alt="NCC Activity 5">
+                </div>
+            </div>
+            
+            <!-- Slider Controls -->
+            <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+            
+            <!-- Slider Dots -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero-section" id="home">
+                <div class="hero-content">
+                    <h2>Welcome to 48 Maharashtra Battalion NCC</h2>
+                    <p class="hero-subtitle">Shaping Future Leaders of India</p>
+                </div>
+            </section>
+
+            <!-- About NCC Section -->
+            <section class="info-section" id="about">
+                <h2 class="section-title">About National Cadet Corps</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="card-icon">🎖️</div>
+                        <h3>Our Mission</h3>
+                        <p>To develop character, comradeship, discipline, leadership, secular outlook, spirit of adventure, and ideals of selfless service amongst the youth of the country.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">🎯</div>
+                        <h3>Our Aim</h3>
+                        <p>To create a human resource of organized, trained and motivated youth to provide leadership in all walks of life and be always available for the service of the nation.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">⚡</div>
+                        <h3>NCC Motto</h3>
+                        <p><strong>"Unity and Discipline"</strong> - The motto encompasses the very purpose and aim of the NCC and is enshrined in the NCC flag.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NCC History Section -->
+            <section class="history-section" id="history">
+                <h2 class="section-title">History of NCC</h2>
+                <div class="history-content">
+                    <div class="history-text">
+                        <h3>Origins and Formation</h3>
+                        <p>The National Cadet Corps (NCC) was established in 1948 under the NCC Act, with its roots tracing back to the University Officers Training Corps (UOTC) which was established in 1942 during World War II. The need for a youth organization that could prepare young Indians for national service led to the formation of NCC.</p>
+                        
+                        <h3>Post-Independence Era</h3>
+                        <p>After India gained independence in 1947, the government recognized the importance of having a trained and disciplined youth force. The National Cadet Corps Act was passed in 1948, and NCC came into existence on 15th July 1948. Initially, NCC was open only to boys, but girls were inducted in 1949.</p>
+                        
+                        <h3>Growth and Expansion</h3>
+                        <p>Over the decades, NCC has grown from a small organization to one of the largest uniformed youth organizations in the world. Today, NCC has over 13 lakh cadets spread across schools, colleges, and universities in India, with representation from Army, Navy, and Air Force wings.</p>
+                        
+                        <h3>Modern NCC</h3>
+                        <p>The NCC has evolved to meet the changing needs of the nation. It now focuses not only on military training but also on personality development, social service, adventure activities, and environmental conservation. The organization plays a crucial role in nation-building by developing qualities of leadership, discipline, and patriotism among the youth.</p>
+                    </div>
+                    <div class="history-stats">
+                        <div class="timeline-box">
+                            <div class="year">1942</div>
+                            <p>UOTC Established</p>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="year">1948</div>
+                            <p>NCC Act Passed</p>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="year">1949</div>
+                            <p>Girls Inducted</p>
+                        </div>
+                        <div class="timeline-box">
+                            <div class="year">2024</div>
+                            <p>13+ Lakh Cadets</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Information -->
+            <section class="key-info">
+                <div class="info-row">
+                    <div class="info-box">
+                        <h3>Established</h3>
+                        <p class="info-number">1948</p>
+                        <p class="info-desc">National Cadet Corps Act</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Cadets</h3>
+                        <p class="info-number">13+ Lakh</p>
+                        <p class="info-desc">Across India</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Directorates</h3>
+                        <p class="info-number">17</p>
+                        <p class="info-desc">Pan India Coverage</p>
+                    </div>
+                    <div class="info-box">
+                        <h3>Wings</h3>
+                        <p class="info-number">3</p>
+                        <p class="info-desc">Army, Navy, Air Force</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Battalion -->
+            <section class="battalion-info" id="battalion">
+                <h2 class="section-title">About 48 MH Bn NCC</h2>
+                <div class="battalion-content">
+                    <div class="battalion-text">
+                        <p class="intro-text">The 48 Maharashtra Battalion NCC is one of the premier battalions in the Maharashtra Directorate under Aurangabad Group, dedicated to molding young minds into disciplined and patriotic citizens of India.</p>
+                        
+                        <div class="activities-section">
+                            <h4>Our Core Activities:</h4>
+                            <ul class="activity-list">
+                                <li>✓ Leadership and Responsibility</li>
+                                <li>✓ Confidence Building</li>
+                                <li>✓ Discipline and Self-Control</li>
+                                <li>✓ Unity and Team Spirit</li>
+                                <li>✓ Patriotism and National Pride</li>
+                                <li>✓ Social Responsibility and Service</li>
+                                <li>✓ Courage and Resilience</li>
+                                <li>✓ Physical Fitness and Endurance</li>
+                                <li>✓ Adaptability and Problem-Solving</li>
+                                <li>✓ Integrity and Ethical Values</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="battalion-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Active Cadets</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🏫</div>
+                            <div class="stat-number">20+</div>
+                            <div class="stat-label">Affiliated Institutions</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-number">40+</div>
+                            <div class="stat-label">Years of Excellence</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NCC Pledge -->
+            <section class="pledge-section">
+                <div class="cadet-image-wrapper">
+                    <img src="material/cadet.png" alt="NCC Cadet" class="cadet-image">
+                </div>
+                <h2 class="section-title">NCC Pledge</h2>
+                <div class="pledge-box">
+                    <p class="pledge-text">
+                        "We, the cadets of the National Cadet Corps, do solemnly pledge that we will serve our motherland with our heart and soul. We will be disciplined and obedient citizens of India. We will maintain unity in our diversity. We will uphold the honour, integrity and glory of our motherland and the NCC."
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>48 MH Bn NCC</h3>
+                    <p>Unity and Discipline</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="https://indiancc.mygov.in/" target="_blank">NCC India</a>
+                    <a href="https://www.joinindianarmy.nic.in/Authentication.aspx" target="_blank">Join Indian Army</a>
+                    <a href="https://www.joinindiannavy.gov.in/en/page/officers-ways-to-join.html" target="_blank">Join Indian Navy</a>
+                    <a href="https://careerairforce.gov.in/" target="_blank">Join Indian Air Force</a>
+                    <a href="https://www.mod.gov.in" target="_blank">Ministry of Defence</a>
+                </div>
+                <!-- <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📧 48mhbn@ncc.gov.in</p>
+                    <p>📞 +91-XXX-XXXXXXX</p>
+                    <p>🕒 Mon-Fri: 9:00 AM - 5:00 PM</p>
+                </div> -->
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 48 MH Bn NCC. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="ncc_script.js"></script>
+</body>
+</html>
+
+

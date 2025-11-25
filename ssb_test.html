@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSB Test Module - 48 MH Bn NCC</title>
+    <link rel="stylesheet" href="ssb_styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="test-header">
+            <div class="header-with-back">
+                <a href="index.html" class="btn-home">← Back to NCC Home</a>
+                <div class="header-title">
+                    <h1>🎖️ SSB Test Module</h1>
+                    <p>Services Selection Board - Psychological Tests</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Test Selection Page -->
+        <div id="testSelection" class="test-selection">
+            <h2>Select a Test</h2>
+            <div class="test-grid">
+                <div class="test-card" onclick="selectTest('ppdt')">
+                    <div class="test-icon">🖼️</div>
+                    <h3>PPDT</h3>
+                    <p>Picture Perception & Discussion Test</p>
+                    <span class="test-duration">⏱️ 30 sec view + 5 min writing</span>
+                </div>
+                <div class="test-card" onclick="selectTest('tat')">
+                    <div class="test-icon">📸</div>
+                    <h3>TAT</h3>
+                    <p>Thematic Apperception Test</p>
+                    <span class="test-duration">⏱️ 30 sec + 4 min (12 pictures)</span>
+                </div>
+                <div class="test-card" onclick="selectTest('wat')">
+                    <div class="test-icon">✍️</div>
+                    <h3>WAT</h3>
+                    <p>Word Association Test</p>
+                    <span class="test-duration">⏱️ 15 sec per word (60 words)</span>
+                </div>
+                <div class="test-card" onclick="selectTest('srt')">
+                    <div class="test-icon">💡</div>
+                    <h3>SRT</h3>
+                    <p>Situation Reaction Test</p>
+                    <span class="test-duration">⏱️ 30 min (60 situations)</span>
+                </div>
+            </div>
+            <button class="btn-material-viewer" onclick="openMaterialViewer()">📚 View All Materials</button>
+        </div>
+
+        <!-- Material Viewer Section -->
+        <div id="materialViewer" class="material-viewer hidden">
+            <div class="viewer-header">
+                <h2>📚 Test Materials Viewer</h2>
+                <button class="btn-close" onclick="closeMaterialViewer()">✕ Close</button>
+            </div>
+            
+            <div class="materials-container">
+                <div class="material-section">
+                    <h3>PPDT Pictures (30)</h3>
+                    <div id="ppdtMaterials" class="material-grid"></div>
+                </div>
+                
+                <div class="material-section">
+                    <h3>TAT Pictures (12)</h3>
+                    <div id="tatMaterials" class="material-grid"></div>
+                </div>
+                
+                <div class="material-section">
+                    <h3>WAT Words (60)</h3>
+                    <div id="watMaterials" class="word-list-container"></div>
+                </div>
+                
+                <div class="material-section">
+                    <h3>SRT Situations (60)</h3>
+                    <div id="srtMaterials" class="situation-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PPDT Section -->
+        <div id="ppdtSection" class="test-section hidden">
+            <!-- Picture Selection -->
+            <div id="ppdtSelection" class="picture-selection">
+                <h2>PPDT - Select Picture</h2>
+                <div class="dropdown-selection">
+                    <label for="ppdtPictureSelect">Choose a picture number (1-30):</label>
+                    <select id="ppdtPictureSelect" class="picture-dropdown">
+                        <option value="">-- Select Picture --</option>
+                    </select>
+                    <button class="btn-primary" onclick="selectPictureFromDropdown()">Continue</button>
+                </div>
+                <button class="btn-back" onclick="backToTests()">← Back to Tests</button>
+            </div>
+
+            <!-- Instructions -->
+            <div id="ppdtInstructions" class="instructions hidden">
+                <h2>PPDT Instructions</h2>
+                <div class="instruction-box">
+                    <h3>📋 How to Proceed:</h3>
+                    <ol>
+                        <li><strong>Viewing Phase (30 seconds):</strong> A picture will be shown for 30 seconds. Observe it carefully.</li>
+                        <li><strong>Writing Phase (5 minutes):</strong> After the picture disappears, write:
+                            <ul>
+                                <li>Number of characters, their gender, age, and mood</li>
+                                <li>What is happening in the picture</li>
+                                <li>A complete story (past, present, future)</li>
+                            </ul>
+                        </li>
+                        <li>Write on paper - this is for practice only</li>
+                    </ol>
+                    <p class="warning">⚠️ Total Time: 5 minutes 30 seconds</p>
+                </div>
+                <button class="btn-primary" onclick="startPPDT()">Start Test</button>
+                <button class="btn-back" onclick="backToPictureSelection()">← Back</button>
+            </div>
+
+            <!-- Test Screen -->
+            <div id="ppdtTest" class="test-screen hidden">
+                <div class="timer-display">
+                    <h3 id="timerLabel">Viewing Time Remaining</h3>
+                    <div class="timer" id="timer">00:30</div>
+                    <div class="test-controls">
+                        <button class="btn-pause" id="pauseBtn" onclick="pauseTest()">⏸️ Pause</button>
+                        <button class="btn-back-home" onclick="confirmBackToHome()">🏠 Exit Test</button>
+                    </div>
+                </div>
+
+                <!-- Picture Display -->
+                <div id="pictureDisplay" class="picture-display-large">
+                    <img id="testPicture" src="" alt="Test Picture">
+                </div>
+
+                <!-- Writing Instructions -->
+                <div id="writingInstructions" class="writing-instructions hidden">
+                    <h2>✍️ Story Writing Time</h2>
+                    <div class="writing-guide">
+                        <h3>Write on your paper:</h3>
+                        <ol>
+                            <li>Number of characters, gender, age, mood</li>
+                            <li>What is happening</li>
+                            <li>Complete story (past, present, future)</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Complete -->
+            <div id="ppdtComplete" class="test-complete hidden">
+                <h2>✅ Test Completed!</h2>
+                <p>PPDT session has ended.</p>
+                <button class="btn-primary" onclick="restartPPDT()">Try Another Picture</button>
+                <button class="btn-back" onclick="backToTests()">← Back to Tests</button>
+            </div>
+        </div>
+
+        <!-- TAT Section -->
+        <div id="tatSection" class="test-section hidden">
+            <!-- Instructions -->
+            <div id="tatInstructions" class="instructions">
+                <h2>TAT Instructions</h2>
+                <div class="instruction-box">
+                    <h3>📋 Thematic Apperception Test:</h3>
+                    <ol>
+                        <li><strong>12 Pictures:</strong> You will be shown 12 pictures one by one</li>
+                        <li><strong>Viewing Time:</strong> Each picture will be shown for 30 seconds</li>
+                        <li><strong>Writing Time:</strong> After picture disappears, you have 4 minutes to write a story</li>
+                        <li><strong>Story Requirements:</strong>
+                            <ul>
+                                <li>What led to the situation</li>
+                                <li>What is happening now</li>
+                                <li>What will be the outcome</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p class="warning">⚠️ Total Time: ~54 minutes (12 pictures × 4.5 min each)</p>
+                </div>
+                <button class="btn-primary" onclick="startTAT()">Start Test</button>
+                <button class="btn-back" onclick="backToTests()">← Back to Tests</button>
+            </div>
+
+            <!-- Test Screen -->
+            <div id="tatTest" class="test-screen hidden">
+                <div class="timer-display">
+                    <h3 id="tatTimerLabel">Picture 1 of 12 - Viewing Time</h3>
+                    <div class="timer" id="tatTimer">00:30</div>
+                    <div class="test-controls">
+                        <button class="btn-pause" id="pauseBtn" onclick="pauseTest()">⏸️ Pause</button>
+                        <button class="btn-back-home" onclick="confirmBackToHome()">🏠 Exit Test</button>
+                    </div>
+                </div>
+
+                <div id="tatPictureDisplay" class="picture-display-large">
+                    <img id="tatTestPicture" src="" alt="TAT Picture">
+                </div>
+
+                <div id="tatWritingInstructions" class="writing-instructions hidden">
+                    <h2>✍️ Story Writing Time</h2>
+                    <div class="writing-guide">
+                        <h3>Write on your paper:</h3>
+                        <ol>
+                            <li>What led to the situation</li>
+                            <li>What is happening now</li>
+                            <li>What will be the outcome</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Complete -->
+            <div id="tatComplete" class="test-complete hidden">
+                <h2>✅ TAT Completed!</h2>
+                <p>All 12 pictures completed.</p>
+                <button class="btn-primary" onclick="restartTAT()">Restart TAT</button>
+                <button class="btn-back" onclick="backToTests()">← Back to Tests</button>
+            </div>
+        </div>
+
+        <!-- WAT Section -->
+        <div id="watSection" class="test-section hidden">
+            <!-- Instructions -->
+            <div id="watInstructions" class="instructions">
+                <h2>WAT Instructions</h2>
+                <div class="instruction-box">
+                    <h3>📋 Word Association Test:</h3>
+                    <ol>
+                        <li><strong>60 Words:</strong> You will be shown 60 words one by one</li>
+                        <li><strong>Time per Word:</strong> 15 seconds to read and respond</li>
+                        <li><strong>Response:</strong> Write the first thought that comes to your mind after reading the word</li>
+                        <li><strong>Be Quick:</strong> Don't overthink, write your immediate reaction</li>
+                    </ol>
+                    <p class="warning">⚠️ Total Time: 15 minutes (60 words × 15 sec each)</p>
+                </div>
+                <button class="btn-primary" onclick="startWAT()">Start Test</button>
+                <button class="btn-back" onclick="backToTests()">← Back to Tests</button>
+            </div>
+
+            <!-- Test Screen -->
+            <div id="watTest" class="test-screen hidden">
+                <div class="timer-display">
+                    <h3 id="watTimerLabel">Word 1 of 60</h3>
+                    <div class="timer" id="watTimer">00:15</div>
+                    <div class="test-controls">
+                        <button class="btn-back-home" onclick="confirmBackToHome()">🏠 Exit Test</button>
+                    </div>
+                </div>
+
+                <div class="word-display">
+                    <div class="current-word" id="currentWord">LOADING...</div>
+                </div>
+
+                <div class="wat-instruction">
+                    <p>Write the first thought that comes to your mind</p>
+                </div>
+            </div>
+
+            <!-- Test Complete -->
+            <div id="watComplete" class="test-complete hidden">
+                <h2>✅ WAT Completed!</h2>
+                <p>All 60 words completed.</p>
+                <button class="btn-primary" onclick="restartWAT()">Restart WAT</button>
+                <button class="btn-back" onclick="backToTests()">← Back to Tests</button>
+            </div>
+        </div>
+
+        <!-- SRT Section -->
+        <div id="srtSection" class="test-section hidden">
+            <!-- Instructions -->
+            <div id="srtInstructions" class="instructions">
+                <h2>SRT Instructions</h2>
+                <div class="instruction-box">
+                    <h3>📋 Situation Reaction Test:</h3>
+                    <ol>
+                        <li><strong>60 Situations:</strong> You will be given 60 different situations</li>
+                        <li><strong>Total Time:</strong> 30 minutes to complete all situations</li>
+                        <li><strong>Response:</strong> Write what YOU would do in that particular situation</li>
+                        <li><strong>Be Practical:</strong> Your response should be realistic and action-oriented</li>
+                        <li><strong>Time Management:</strong> Approximately 30 seconds per situation</li>
+                    </ol>
+                    <p class="warning">⚠️ Total Time: 30 minutes for 60 situations</p>
+                </div>
+                <button class="btn-primary" onclick="startSRT()">Start Test</button>
+                <button class="btn-back" onclick="backToTests()">← Back to Tests</button>
+            </div>
+
+            <!-- Test Screen -->
+            <div id="srtTest" class="test-screen hidden">
+                <div class="timer-display">
+                    <h3 id="srtTimerLabel">Situation 1 of 60</h3>
+                    <div class="timer" id="srtTimer">30:00</div>
+                    <div class="test-controls">
+                        <button class="btn-back-home" onclick="confirmBackToHome()">🏠 Exit Test</button>
+                    </div>
+                </div>
+
+                <div class="situation-display">
+                    <div class="situation-number" id="situationNumber">Situation 1</div>
+                    <div class="situation-text" id="situationText">Loading situation...</div>
+                </div>
+
+                <div class="srt-navigation">
+                    <button class="btn-nav" onclick="previousSituation()" id="prevBtn" disabled>← Previous</button>
+                    <button class="btn-nav" onclick="nextSituation()" id="nextBtn">Next →</button>
+                </div>
+            </div>
+
+            <!-- Test Complete -->
+            <div id="srtComplete" class="test-complete hidden">
+                <h2>✅ SRT Completed!</h2>
+                <p>All 60 situations completed.</p>
+                <button class="btn-primary" onclick="restartSRT()">Restart SRT</button>
+                <button class="btn-back" onclick="backToTests()">← Back to Tests</button>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="loading-indicator hidden">
+            <div class="spinner"></div>
+            <p>Loading test data...</p>
+        </div>
+
+        <!-- Image Modal -->
+        <div id="imageModal" class="image-modal hidden">
+            <span class="modal-close" onclick="closeImageModal()">&times;</span>
+            <img class="modal-content" id="modalImage">
+            <div id="modalCaption" class="modal-caption"></div>
+        </div>
+    </div>
+
+    <script src="ssb_js.js"></script>
+</body>
+</html>
